@@ -1,5 +1,5 @@
 document.getElementById('homeButton').addEventListener('click', function() {
-    window.location.href = 'home.html';
+    window.location.href = 'index.html';
 });
 
 document.addEventListener('DOMContentLoaded', function () {
