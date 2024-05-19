@@ -24,16 +24,20 @@ main {
 img {
     width: 100%;
     height: auto;
+    border-radius: 15px;
 }
 
 h1, h2 {
     color: #333;
     text-align: left; /* Left-align the titles */
-    margin: 0;
+    margin-top: 25px;
 }
 
+
+
+
 h1{
-    margin: 20px 0 0 20%; /* Remove default margin for h1 and h2 */
+    margin: 20px 20% 0 20%; /* Remove default margin for h1 and h2 */
 }
 
 @media only screen and (max-width: 600px) {
@@ -44,4 +48,21 @@ h1{
     button {
         margin: 10px 0 0 5%;
     }
+}
+
+
+.reload-button {
+    margin-top: 20px; /* Adjust margin top as needed */
+    width: calc(15% - 40px); /* Set button width to be 15% of container minus margins */
+    max-width: 200px; /* Set a maximum width for the button */
+    z-index: 999; /* Ensure it's above other content */
+    background: none; /* Remove background */
+    border: none; /* Remove borders */
+    padding: 0; /* Remove padding */
+    cursor: pointer; /* Change cursor to hand */
+}
+
+.reload-button img {
+    width: 100%; /* Ensure the image fills the button */
+    height: auto; /* Maintain aspect ratio */
 }

@@ -1,7 +1,3 @@
-document.getElementById('homeButton').addEventListener('click', function() {
-    window.location.href = 'index.html';
-});
-
 document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const imageName = urlParams.get('image');
@@ -37,23 +33,25 @@ document.addEventListener('DOMContentLoaded', function () {
         // Split the text into lines
         const lines = data.split('\n');
 
-        // Create HTML elements dynamically
-        const titleHTML = document.createElement('div');
-        titleHTML.innerHTML = lines.length >= 1 ? lines[0] : '';
+        // Update title and subtitle
+        titleElement.textContent = lines.length >= 1 ? lines[0] : '';
+        subtitleElement.textContent = lines.length >= 2 ? lines[1] : '';
 
-        const subtitleHTML = document.createElement('div');
-        subtitleHTML.innerHTML = lines.length >= 2 ? lines[1] : '';
+        // Join remaining lines for content
+        const contentText = lines.slice(2).join('\n');
 
-        const contentHTML = document.createElement('div');
-        contentHTML.textContent = lines.length > 2 ? lines.slice(2).join('\n') : ''; // Use textContent instead of innerHTML
-
-        // Append the HTML elements to the respective containers
-        titleElement.appendChild(titleHTML);
-        subtitleElement.appendChild(subtitleHTML);
-        contentElement.appendChild(contentHTML);
+        // Set the content text with line breaks
+        contentElement.textContent = contentText;
+        contentElement.innerHTML = contentElement.innerHTML.replace(/\n/g, '<br>'); // Replace newlines with <br> tags
     })
     .catch(error => {
         console.error('Error fetching article content:', error);
+    });
+
+    // Add event listener to the home button
+    const homeButton = document.getElementById('homeButton');
+    homeButton.addEventListener('click', function() {
+        window.location.href = 'index.html';
     });
 
 });
