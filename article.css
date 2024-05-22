@@ -9,16 +9,17 @@ button {
     color: white;
     border: none;
     padding: 10px 20px;
-    text-align: left; /* Left-align the button text */
+    text-align: left;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 20px 0 0 20%; /* Adjust margin for positioning */
+    margin: 20px 0 0 20%;
+    cursor: pointer; /* Ensure the cursor is a pointer on hover */
 }
 
 main {
-    margin: 20px 20% 20px 20%;
-    text-align: left; /* Left-align the main content */
+    margin: 20px 20%;
+    text-align: left;
 }
 
 img {
@@ -29,40 +30,48 @@ img {
 
 h1, h2 {
     color: #333;
-    text-align: left; /* Left-align the titles */
+    text-align: left;
     margin-top: 25px;
 }
 
-
-
-
-h1{
-    margin: 20px 20% 0 20%; /* Remove default margin for h1 and h2 */
+h1 {
+    margin: 20px 20% 0 20%;
 }
 
+.reload-button {
+    margin-top: 20px;
+    width: calc(15% - 40px);
+    max-width: 200px;
+    z-index: 999;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer; /* Change cursor to hand */
+}
+
+.reload-button img {
+    width: 100%;
+    height: auto;
+}
+
+/* Responsive Design */
 @media only screen and (max-width: 600px) {
     main {
         margin: 10px 5%;
     }
 
     button {
+        width: 50%; /* Make the button width 50% of the container */
         margin: 10px 0 0 5%;
     }
-}
 
+    .reload-button {
+        width: 50%; /* Ensure button takes 50% of the container width */
+        margin-top: 10px;
+    }
 
-.reload-button {
-    margin-top: 20px; /* Adjust margin top as needed */
-    width: calc(15% - 40px); /* Set button width to be 15% of container minus margins */
-    max-width: 200px; /* Set a maximum width for the button */
-    z-index: 999; /* Ensure it's above other content */
-    background: none; /* Remove background */
-    border: none; /* Remove borders */
-    padding: 0; /* Remove padding */
-    cursor: pointer; /* Change cursor to hand */
-}
-
-.reload-button img {
-    width: 100%; /* Ensure the image fills the button */
-    height: auto; /* Maintain aspect ratio */
+    .reload-button img {
+        width: 100%; /* Ensure the image fills the button */
+        height: auto;
+    }
 }
