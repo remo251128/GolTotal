@@ -74,4 +74,8 @@ h1 {
         width: 100%; /* Ensure the image fills the button */
         height: auto;
     }
+
+    h1 {
+        margin: 10px 5%; /* Align h1 with other elements */
+    }
 }
