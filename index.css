@@ -96,11 +96,13 @@ main {
     }
 
     .block img {
-        width: 100%;
+        width: calc(100% - 20px); /* Full width of container with margin */
+        margin: 0 10px; /* Add margin to the image */
     }
 
     .image-title {
         font-size: 18px; /* Adjust font size for better readability */
+        margin: 0 10px; /* Ensure the title aligns with the image */
     }
 }
 
