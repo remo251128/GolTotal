@@ -63,7 +63,7 @@ main {
     background: none;
     border: none;
     padding: 0;
-    cursor: pointer;
+    cursor: pointer; /* Change cursor to hand */
 }
 
 .button-icon {
@@ -78,13 +78,29 @@ main {
     }
 
     .reload-button {
-        width: 50%; /* Make the button width 50% of the container */
+        width: 50%;
         margin-top: 10px;
     }
 
     .button-icon {
-        width: 100%; /* Ensure the image fills the button */
+        width: 100%;
         height: auto;
+    }
+
+    .image-container {
+        grid-template-columns: 1fr; /* One column layout */
+    }
+
+    .block {
+        margin-bottom: 20px; /* Add margin between blocks */
+    }
+
+    .block img {
+        width: 100%;
+    }
+
+    .image-title {
+        font-size: 18px; /* Adjust font size for better readability */
     }
 }
 
