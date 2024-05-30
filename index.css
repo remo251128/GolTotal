@@ -96,8 +96,9 @@ main {
     }
 
     .block img {
-        width: calc(100% - 20px); /* Full width of container with margin */
-        margin: 0 10px; /* Add margin to the image */
+        width: calc(100% - 10px); /* Full width of container with margin */
+        margin: 0 5px; /* Add margin to the image */
+        height: auto; /* Adjust height automatically */
     }
 
     .image-title {
