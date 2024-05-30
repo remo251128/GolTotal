@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const imageContainer = document.getElementById('imageContainer');
     let startRow = 0;
-    const rowsPerLoad = 2; 
+    const rowsPerLoad = 2;
     const maxArticles = 100; // Maximum number of articles to display
     let loading = false;
-    let displayedArticles = {}; 
+    let displayedArticles = {};
 
     function loadMoreArticles() {
         loading = true;
@@ -95,10 +95,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const imageWidth = (containerWidth - totalMarginWidth) / numImagesPerRow;
         const imageHeight = imageWidth * 9 / 16; // Assuming images have a 16:9 aspect ratio
 
-        // Set fixed width and height for all images
+        // Set fixed width and height for all images in desktop view
         images.forEach(img => {
-            img.style.width = imageWidth + 'px';
-            img.style.height = imageHeight + 'px';
+            if (window.innerWidth <= 600) {
+                img.style.width = 'calc(100% - 10px)'; // Almost full width for mobile
+                img.style.height = 'auto'; // Maintain aspect ratio
+                img.style.margin = '0 5px'; // Margin for mobile view
+            } else {
+                img.style.width = imageWidth + 'px';
+                img.style.height = imageHeight + 'px';
+            }
         });
     }
 
@@ -106,23 +112,23 @@ document.addEventListener('DOMContentLoaded', function () {
         const banner = document.querySelector('.banner'); // Select the banner element
         const bannerImages = ['Banner/1.png', 'Banner/2.png', 'Banner/3.png', 'Banner/4.png', 'Banner/5.png']; // Array of banner images
         let currentImageIndex = 0; // Variable to keep track of current banner image index
-        
+
         // Set the first image immediately
         banner.style.backgroundSize = 'cover'; // Stretch image to fit fixed width and height
         banner.style.backgroundRepeat = 'no-repeat';
         banner.style.backgroundImage = `url(${bannerImages[currentImageIndex]})`;
-    
+
         setInterval(() => {
             // Preload the next image for smooth transition
             const nextImage = new Image();
             nextImage.src = bannerImages[(currentImageIndex + 1) % bannerImages.length];
-            
+
             // Smooth transition between images
             banner.style.transition = 'background-image 1s ease-in-out';
-            
+
             // Set the background image of the banner
             banner.style.backgroundImage = `url(${nextImage.src})`;
-            
+
             // Increment index and loop back to 0 if it exceeds the array length
             currentImageIndex = (currentImageIndex + 1) % bannerImages.length;
         }, 5000); // Change image every 5 seconds
@@ -130,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Load the first rowsPerLoad initially
     loadMoreArticles();
-
 
     // Load additional rows as the user scrolls down
     window.addEventListener('scroll', function () {
@@ -141,4 +146,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     changeBannerImage();
 
+    // Adjust image sizes on window resize
+    window.addEventListener('resize', adjustImageSizes);
 });
