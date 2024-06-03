@@ -4,10 +4,11 @@
 <!--LISTA DESIRABLE QUALITIES (SECURITY FOR OWN DATA, RESPONSIVE IN MOBILES, STORAGE IMAGES AND TEXT, ALL NAVIGATORS?, https? ETC)-->
 <!--FUNCIONALIDAD COMO BUSCAR, RECOMENDADOS-->
 <!--DEMARCAR CADA ARITULO Y SU TITULAR EN SECCIONES-->
+<!--AÑADIR LIL ICONO A LA PESTAÑA DE LA PAGINA-->
+<!--CARRUSEL FUNCIONA LIGERMANETE MAL EN AMBAS VERS (DESKTOP Y MOVIL, LIGEROBLACKOUT PRIMERA VEZ QUE APARECE), ADEMAS EN MOVIL LAS IMAGENES SALEN CORTADAS, CORREGIR-->
 
 <!--YA ESTA FUNCIONANDO EL ALOJAMIENTO (https://remo251128.github.io/GolTotal/index.html) , AÑADIR UN DOMINIO PERSONALIZADO Y VER LIMITES DE TRAFICO, ESCALABILIDAD, ETC-->
-<!--Consider using more semantic tags to enhance accessibility and SEO. For example, use <header>, <nav>, <section>, and <footer> ?-->
-<!--REVISAR COMO REACCIONA EN DISPSITIVO (DE PREF EN VARIOS CELULARES) (ARTICLE casi PERO HOME NO ES NADA RESPONSIVE),LOS CAMBIOS A LA PAGINA EN TIEMPO REAL, CODIGO DIFERENTE PARA MOVILES?-->
+<!--REVISAR COMO REACCIONA EN DISPSITIVO (DE PREF EN VARIOS CELULARES) LOS CAMBIOS A LA PAGINA EN TIEMPO REAL-->
 <!--AÑADIR FECHA, HORA Y AUTOR? EN HOME Y EN ARTICLE? (test responsive)-->
 <!--LINKS A REDES SOCIALES Y COMENZAR A PROMOCIONAR DE VERDAD (hacerlo responsive, both kind of dispostivs)-->
 <!--IMAGENES (DERECHOS?)-->
@@ -30,26 +31,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gol Total Perú | Últimas noticias de la Liga 1, Universitario, Alianza Lima, Sporting Cristal, Selección Peruana y más. Todo lo que pasa, al minuto y en un único portal de fútbol.">
+    <meta name="keywords" content="futbol, peru, noticias, perú, fútbol, futbolero, liga 1, refuerzos, contrataciones, U, universitario, alianza lima, cristal, selección, responsive">
+    <meta name="author" content="Gol Total Perú">
+    <title>Gol Total Perú</title>
     <link rel="stylesheet" href="index.css">
-    <title>Responsive Image Gallery</title>
 </head>
 
 <body>
     <div class="container">
         <!-- Image Button -->
-        <button class="reload-button">
+        <button class="reload-button" aria-label="Reload Page">
             <img src="Logo/logo.png" alt="Reload" class="button-icon">
         </button>
 
         <!-- Banner -->
-        <div class="banner" id="banner"></div>
+        <section class="banner" id="banner" aria-label="Banner"></section>
 
         <!-- Latest News Heading -->
         <h2 class="latest-news">Últimas Noticias</h2>
 
         <!-- Main Content -->
         <main>
-            <div class="image-container" id="imageContainer"></div>
+            <div class="image-container" id="imageContainer" aria-live="polite"></div>
         </main>
     </div>
 
