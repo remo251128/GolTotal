@@ -1,32 +1,62 @@
+:root {
+    --primary-color: #000;
+    --secondary-color: #333;
+    --font-family: 'Arial', sans-serif;
+    --font-size: 14px;
+    --font-size-large: 24px;
+    --font-size-small: 12px;
+    --margin: 20px;
+}
+
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-family);
 }
 
-/* Container */
 .container {
     margin: 0 15%;
 }
 
-/* Banner */
 .banner {
     height: 33vh;
-    background-color: #000;
+    background-color: var(--primary-color);
     margin: 30px 0;
     border-radius: 15px;
 }
 
-/* Main Content */
+.latest-news {
+    text-align: left;
+    margin: 50px 0 5px;
+    font-size: var(--font-size-large);
+    padding-left: var(--margin);
+}
+
+.reload-button {
+    margin-top: var(--margin);
+    width: calc(15% - 40px);
+    max-width: 200px;
+    z-index: 999;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.button-icon {
+    width: 100%;
+    height: auto;
+}
+
 main {
-    padding: 20px;
+    padding: var(--margin);
 }
 
 .image-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: var(--margin);
     margin-top: 5px;
 }
 
@@ -45,30 +75,7 @@ main {
 .image-title {
     text-align: center;
     margin-top: 5px;
-    font-size: 14px;
-}
-
-.latest-news {
-    text-align: left;
-    margin: 50px 0 5px;
-    font-size: 24px;
-    padding-left: 20px;
-}
-
-.reload-button {
-    margin-top: 20px;
-    width: calc(15% - 40px);
-    max-width: 200px;
-    z-index: 999;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer; /* Change cursor to hand */
-}
-
-.button-icon {
-    width: 100%;
-    height: auto;
+    font-size: var(--font-size);
 }
 
 /* Responsive Design */
@@ -82,28 +89,19 @@ main {
         margin-top: 10px;
     }
 
-    .button-icon {
-        width: 100%;
-        height: auto;
-    }
-
     .image-container {
-        grid-template-columns: 1fr; /* One column layout */
-    }
-
-    .block {
-        margin-bottom: 20px; /* Add margin between blocks */
+        grid-template-columns: 1fr;
     }
 
     .block img {
-        width: calc(100% - 10px); /* Full width of container with margin */
-        margin: 0 5px; /* Add margin to the image */
-        height: auto; /* Adjust height automatically */
+        width: calc(100% - 10px);
+        margin: 0 5px;
+        height: auto;
     }
 
     .image-title {
-        font-size: 18px; /* Adjust font size for better readability */
-        margin: 0 10px; /* Ensure the title aligns with the image */
+        font-size: 18px;
+        margin: 0 10px;
     }
 }
 
