@@ -30,29 +30,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A responsive image gallery with the latest news.">
-    <meta name="keywords" content="responsive, image gallery, news, latest news, photo gallery">
-    <meta name="author" content="Your Name">
-    <title>Responsive Image Gallery</title>
     <link rel="stylesheet" href="index.css">
+    <title>Responsive Image Gallery</title>
 </head>
 
 <body>
     <div class="container">
         <!-- Image Button -->
-        <button class="reload-button" aria-label="Reload Page">
+        <button class="reload-button">
             <img src="Logo/logo.png" alt="Reload" class="button-icon">
         </button>
 
         <!-- Banner -->
-        <section class="banner" id="banner" aria-label="Banner"></section>
+        <div class="banner" id="banner"></div>
 
         <!-- Latest News Heading -->
         <h2 class="latest-news">Últimas Noticias</h2>
 
         <!-- Main Content -->
         <main>
-            <div class="image-container" id="imageContainer" aria-live="polite"></div>
+            <div class="image-container" id="imageContainer"></div>
         </main>
     </div>
 
