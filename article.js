@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const imgElement = document.querySelector('main img');
         imgElement.src = `Imagenes/${imageName}`;
 
-        // Check the file extension and set the type attribute accordingly
         const fileExtension = imageName.split('.').pop().toLowerCase();
         if (fileExtension === 'jpg' || fileExtension === 'jpeg') {
             imgElement.type = 'image/jpeg';
@@ -15,45 +14,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const lastIndex = imageName.lastIndexOf(".");
-    const result = imageName.substring(0, lastIndex);
+    const result = imageName.replace(/\.[^/.]+$/, "");
 
-    // Get references to the HTML elements where you want to display the content
     const titleElement = document.querySelector('h1');
     const subtitleElement = document.querySelector('h2');
     const contentElement = document.querySelector('p');
+    const metaElement = document.querySelector('h6');
 
-    // Dynamically construct the text file name based on the image name
-    const textFileName = `Texto/${result}.txt`;
+    fetch(`Texto/${result}.txt`)
+        .then(response => response.text())
+        .then(data => {
+            const lines = data.split('\n');
+            metaElement.textContent = `${lines[2]} | ${lines[3]}`;
+            titleElement.textContent = lines[0] || '';
+            subtitleElement.textContent = lines[1] || '';
+            contentElement.innerHTML = lines.slice(4).join('<br>'); // Use innerHTML to preserve line breaks
+        })
+        .catch(error => console.error('Error fetching article content:', error));
 
-    // Fetch the text file content using the Fetch API
-    fetch(textFileName)
-    .then(response => response.text())
-    .then(data => {
-        // Split the text into lines
-        const lines = data.split('\n');
-
-        // Update title and subtitle
-        titleElement.textContent = lines.length >= 1 ? lines[0] : '';
-        subtitleElement.textContent = lines.length >= 2 ? lines[1] : '';
-
-        // Join remaining lines for content
-        const contentText = lines.slice(2).join('\n');
-
-        // Set the content text with line breaks
-        contentElement.textContent = contentText;
-        contentElement.innerHTML = contentElement.innerHTML.replace(/\n/g, '<br>'); // Replace newlines with <br> tags
-    })
-    .catch(error => {
-        console.error('Error fetching article content:', error);
-    });
-
-    // Add event listener to the home button
     const homeButton = document.getElementById('homeButton');
-    homeButton.addEventListener('click', function() {
+    homeButton.addEventListener('click', () => {
         window.location.href = 'index.html';
     });
-
 });
 
 

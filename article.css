@@ -14,7 +14,7 @@ button {
     display: inline-block;
     font-size: 16px;
     margin: 20px 0 0 20%;
-    cursor: pointer; /* Ensure the cursor is a pointer on hover */
+    cursor: pointer;
 }
 
 main {
@@ -42,11 +42,10 @@ h1 {
     margin-top: 20px;
     width: calc(15% - 40px);
     max-width: 200px;
-    z-index: 999;
     background: none;
     border: none;
     padding: 0;
-    cursor: pointer; /* Change cursor to hand */
+    cursor: pointer;
 }
 
 .reload-button img {
@@ -54,28 +53,37 @@ h1 {
     height: auto;
 }
 
-/* Responsive Design */
+h6 {
+    color: gray;
+    margin: 20px 20% 0 20%;
+    text-align: left;
+}
+
 @media only screen and (max-width: 600px) {
     main {
         margin: 10px 5%;
     }
 
     button {
-        width: 50%; /* Make the button width 50% of the container */
+        width: 50%;
         margin: 10px 0 0 5%;
     }
 
     .reload-button {
-        width: 50%; /* Ensure button takes 50% of the container width */
+        width: 50%;
         margin-top: 10px;
     }
 
     .reload-button img {
-        width: 100%; /* Ensure the image fills the button */
+        width: 100%;
         height: auto;
     }
 
     h1 {
-        margin: 10px 5%; /* Align h1 with other elements */
+        margin: 10px 5%;
+    }
+
+    h6 {
+        margin: 10px 5%;
     }
 }

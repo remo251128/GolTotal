@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let displayedArticles = {};
 
     const loadMoreArticles = () => {
+        if (loading) return;
         loading = true;
         const articlesRemaining = maxArticles - Object.keys(displayedArticles).length;
         const articlesToLoad = Math.min(rowsPerLoad * 3, articlesRemaining);
@@ -17,22 +18,19 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`noticias.json?start=${startRow * 3}&limit=${articlesToLoad}`)
             .then(response => response.json())
             .then(data => {
-                if (data && data.images && data.images.length > 0) {
+                if (data?.images?.length > 0) {
                     displayImages(data.images.reverse());
                     startRow += rowsPerLoad;
-                    loading = false;
                 } else {
                     console.error('No more images found.');
                 }
             })
-            .catch(error => {
-                console.error('Error fetching articles:', error);
-                loading = false;
-            });
+            .catch(error => console.error('Error fetching articles:', error))
+            .finally(() => loading = false);
     };
 
     const displayImages = (imageFiles) => {
-        imageFiles.forEach((filename, index) => {
+        imageFiles.forEach((filename) => {
             if (!displayedArticles[filename] && Object.keys(displayedArticles).length < maxArticles) {
                 const block = document.createElement('div');
                 block.classList.add('block');
@@ -42,31 +40,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const imgElement = new Image();
                 imgElement.src = `Imagenes/${filename}`;
-                imgElement.alt = `Image ${startRow * 3 + index + 1}`;
+                imgElement.alt = `Image`;
                 imgElement.classList.add('resizable-image');
 
                 const title = document.createElement('a');
                 title.classList.add('image-title');
-                title.style.fontFamily = 'sans-serif';
-                title.style.fontSize = '20px';
-                title.style.fontWeight = 'bold';
-                title.style.color = '#000000';
-                title.style.textDecoration = 'none';
-                title.style.marginTop = '20px';
-                title.style.marginBottom = '30px';
-                title.style.display = 'block';
-                title.style.textAlign = 'center';
+                title.style.cssText = `
+                    font-family: sans-serif;
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: #000;
+                    text-decoration: none;
+                    margin: 20px 0 30px;
+                    display: block;
+                    text-align: center;
+                `;
+
+                const meta = document.createElement('h6');
+                meta.classList.add('image-meta');
 
                 fetch(`Texto/${filename.replace(/\.[^/.]+$/, "")}.txt`)
                     .then(response => response.text())
                     .then(text => {
-                        title.textContent = text.split('\n')[0];
+                        const lines = text.split('\n');
+                        title.textContent = lines[0];
+                        meta.textContent = `${lines[2]} | ${lines[3]}`;
                         title.href = `article.html?image=${filename}`;
                     })
                     .catch(error => console.error('Error fetching text file:', error));
 
                 imgLink.appendChild(imgElement);
                 block.appendChild(imgLink);
+                block.appendChild(meta);
                 block.appendChild(title);
                 imageContainer.appendChild(block);
 

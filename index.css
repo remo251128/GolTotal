@@ -37,7 +37,6 @@ body {
     margin-top: var(--margin);
     width: calc(15% - 40px);
     max-width: 200px;
-    z-index: 999;
     background: none;
     border: none;
     padding: 0;
@@ -78,7 +77,14 @@ main {
     font-size: var(--font-size);
 }
 
-/* Responsive Design */
+.image-meta {
+    text-align: center;
+    color: gray;
+    font-size: var(--font-size-small);
+    margin-top: 5px;
+}
+
+/* Diseño Responsive */
 @media only screen and (max-width: 600px) {
     .container {
         margin: 0 5%;
@@ -103,8 +109,13 @@ main {
         font-size: 18px;
         margin: 0 10px;
     }
-}
 
+    .image-meta {
+        text-align: left;
+        margin: 10px 5px;
+        font-size: var(--font-size-small);
+    }
+}
 
 
 
