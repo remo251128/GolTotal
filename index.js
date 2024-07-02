@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`noticias.json?start=${startRow * 3}&limit=${articlesToLoad}`)
             .then(response => response.json())
             .then(data => {
-                if (data?.images?.length > 0) {
+                if (data && data.images && data.images.length > 0) {
                     displayImages(data.images.reverse());
                     startRow += rowsPerLoad;
                 } else {
@@ -108,15 +108,21 @@ document.addEventListener('DOMContentLoaded', function () {
         const bannerImages = ['Banner/1.png', 'Banner/2.png', 'Banner/3.png', 'Banner/4.png', 'Banner/5.png'];
         let currentImageIndex = 0;
 
+        // Pre-cargar la primera imagen
+        const firstImage = new Image();
+        firstImage.src = bannerImages[0];
+
         banner.style.backgroundSize = 'cover';
         banner.style.backgroundRepeat = 'no-repeat';
-        banner.style.backgroundImage = `url(${bannerImages[currentImageIndex]})`;
+        banner.style.backgroundImage = `url(${firstImage.src})`;
 
         setInterval(() => {
             const nextImage = new Image();
             nextImage.src = bannerImages[(currentImageIndex + 1) % bannerImages.length];
-            banner.style.transition = 'background-image 1s ease-in-out';
-            banner.style.backgroundImage = `url(${nextImage.src})`;
+            nextImage.onload = () => {
+                banner.style.transition = 'background-image 1s ease-in-out';
+                banner.style.backgroundImage = `url(${nextImage.src})`;
+            };
             currentImageIndex = (currentImageIndex + 1) % bannerImages.length;
         }, 5000);
     };

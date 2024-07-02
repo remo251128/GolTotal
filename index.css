@@ -73,7 +73,7 @@ main {
 
 .image-title {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 10px; /* Reducido el margen superior */
     font-size: var(--font-size);
 }
 
@@ -81,7 +81,7 @@ main {
     text-align: center;
     color: gray;
     font-size: var(--font-size-small);
-    margin-top: 5px;
+    margin-top: 5px; /* Ajuste para estar cerca de la imagen */
 }
 
 /* Diseño Responsive */
@@ -112,7 +112,7 @@ main {
 
     .image-meta {
         text-align: left;
-        margin: 10px 5px;
+        margin: 5px 5px; /* Ajuste para estar cerca de la imagen en pantallas pequeñas */
         font-size: var(--font-size-small);
     }
 }
